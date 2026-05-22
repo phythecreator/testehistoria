@@ -3,327 +3,489 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Teste História 9º Ano PDF - Debug</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Download Teste de História 9º Ano – Colégio Vasco da Gama</title>
     <style>
-        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-        .shadow-soft { box-shadow: 0 10px 40px -10px rgba(0,0,0,0.1), 0 4px 16px -4px rgba(0,0,0,0.05); }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            background: #ffffff;
+            color: #202124;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 72px 24px 80px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 400;
+            color: #202124;
+            text-align: center;
+            letter-spacing: -0.2px;
+            margin-bottom: 12px;
+        }
+
+        .metadata {
+            text-align: center;
+            color: #5f6368;
+            font-size: 14px;
+            margin-bottom: 56px;
+        }
+
+        .metadata span {
+            display: inline-block;
+            margin: 0 8px;
+        }
+
+        .verificada {
+            color: #188038;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .card {
+            border: 1px solid #e8eaed;
+            border-radius: 12px;
+            padding: 24px;
+            background: #fff;
+        }
+
+        .preview-title {
+            font-size: 12px;
+            color: #5f6368;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .preview-wrap {
+            position: relative;
+            border: 1px solid #e8eaed;
+            border-radius: 8px;
+            overflow: hidden;
+            height: 440px;
+            background: #f8f9fa;
+        }
+
+        .preview-wrap iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            background: white;
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 45%;
+            background: linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.97) 30%, rgba(255,255,255,0.85) 60%, rgba(255,255,255,0) 100%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 0 20px 28px;
+            pointer-events: none;
+        }
+
+        .overlay-text {
+            color: #5f6368;
+            font-size: 13px;
+            text-align: center;
+            background: rgba(255,255,255,0.9);
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1px solid #e8eaed;
+        }
+
+        .file-meta {
+            margin-top: 12px;
+            font-size: 13px;
+            color: #80868b;
+            text-align: center;
+        }
+
+        .form-card {
+            padding: 28px;
+        }
+
+        .field {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #3c4043;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #dadce0;
+            border-radius: 8px;
+            font-size: 15px;
+            font-family: inherit;
+            color: #202124;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #fff;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 1px #1a73e8;
+        }
+
+        input::placeholder {
+            color: #9aa0a6;
+        }
+
+        .consent {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin: 22px 0 24px;
+        }
+
+        .consent input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-top: 2px;
+            accent-color: #1a73e8;
+            flex-shrink: 0;
+        }
+
+        .consent label {
+            font-size: 13px;
+            color: #5f6368;
+            font-weight: 400;
+            line-height: 1.4;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 100%;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 24px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+        }
+
+        .btn:hover:not(:disabled) {
+            background: #1765cc;
+            box-shadow: 0 1px 2px rgba(60,64,67,0.3);
+        }
+
+        .btn:active:not(:disabled) {
+            background: #1557b0;
+        }
+
+        .btn:disabled {
+            background: #a8c7fa;
+            cursor: not-allowed;
+        }
+
+        .success {
+            display: none;
+            margin-top: 16px;
+            padding: 12px 14px;
+            background: #e6f4ea;
+            border: 1px solid #cce8d3;
+            border-radius: 8px;
+            color: #137333;
+            font-size: 14px;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .success svg {
+            flex-shrink: 0;
+        }
+
+        .error {
+            display: none;
+            margin-top: 12px;
+            color: #d93025;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .error.show {
+            display: block;
+        }
+
+        .info-note {
+            margin-top: 18px;
+            padding-top: 18px;
+            border-top: 1px solid #f1f3f4;
+            font-size: 12px;
+            color: #80868b;
+            text-align: center;
+        }
+
+        .trust-note {
+            text-align: center;
+            margin-top: 56px;
+            color: #80868b;
+            font-size: 12px;
+            line-height: 1.6;
+            max-width: 620px;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .trust-note svg {
+            flex-shrink: 0;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 860px) {
+            .container {
+                padding: 48px 20px 60px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .metadata {
+                margin-bottom: 40px;
+                font-size: 13px;
+            }
+
+            .metadata span {
+                display: block;
+                margin: 4px 0;
+            }
+
+            .metadata span:nth-child(even) {
+                display: none;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .preview-wrap {
+                height: 380px;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            .form-card {
+                padding: 24px 20px;
+            }
+        }
     </style>
 </head>
-<body class="bg-gradient-to-b from-slate-50 to-white min-h-screen text-slate-800">
-    <div class="max-w-6xl mx-auto px-4 py-8 md:py-12">
-        <!-- Header -->
-        <header class="text-center mb-10 md:mb-14">
-            <div class="inline-flex items-center gap-2 bg-amber-100 text-amber-800 border border-amber-200 px-3 py-1.5 rounded-full text-xs font-semibold mb-4">
-                <span class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
-                MODO DEBUG ATIVO
+<body>
+    <div class="container">
+        <h1>Fazer Download de Teste de História 9º Ano PDF</h1>
+        <div class="metadata">
+            Fonte: Colégio Vasco da Gama 2024
+            <span>|</span>
+            Data: 12/05/25
+            <span>|</span>
+            <span class="verificada">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1Z" fill="#188038"/>
+                    <path d="M10 16.5L6.5 13L7.91 11.59L10 13.67L16.09 7.59L17.5 9L10 16.5Z" fill="white"/>
+                </svg>
+                Segurança: Verificada
+            </span>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="preview-title">Pré-visualização</div>
+                <div class="preview-wrap">
+                    <iframe src="Teste%20Hist%C3%B3ria%209%C2%BA%20Ano%20.pdf#toolbar=0&navpanes=0&scrollbar=0&page=1&zoom=90" title="Pré-visualização do teste"></iframe>
+                    <div class="overlay">
+                        <div class="overlay-text">Visualização parcial — descarregue para ver o documento completo</div>
+                    </div>
+                </div>
+                <div class="file-meta">PDF • 8 páginas • Ano letivo 2023/2024</div>
             </div>
-            <h1 class="text-[28px] md:text-[40px] font-bold tracking-tight text-slate-900 leading-tight">
-                Fazer Download de Teste de História 9º Ano PDF
-            </h1>
-            <p class="mt-3 text-slate-500 text-[15px]">
-                Atualizado em novembro 2024 • Formato PDF • 9º Ano • Download imediato
-            </p>
-        </header>
 
-        <!-- Main Grid -->
-        <main class="grid lg:grid-cols-5 gap-8 lg:gap-10 items-start">
-            <!-- Left: Preview -->
-            <section class="lg:col-span-3">
-                <div class="bg-white rounded-[28px] shadow-soft border border-slate-100 overflow-hidden">
-                    <div class="bg-slate-900 p-6 md:p-8">
-                        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
-                            <div class="h-8 bg-slate-100 flex items-center gap-1.5 px-3 border-b">
-                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
-                                <span class="ml-2 text-[11px] text-slate-500 mono">Teste_Historia_9ano.pdf</span>
-                            </div>
-                            <div class="p-6 md:p-8">
-                                <div class="flex items-start justify-between mb-6">
-                                    <div>
-                                        <div class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">História • 9º Ano</div>
-                                        <h3 class="text-2xl font-bold text-slate-900 mt-1">Teste de Avaliação</h3>
-                                    </div>
-                                    <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                                    </div>
-                                </div>
-                                <div class="space-y-3">
-                                    <div class="h-2 bg-slate-100 rounded w-full"></div>
-                                    <div class="h-2 bg-slate-100 rounded w-5/6"></div>
-                                    <div class="h-2 bg-slate-100 rounded w-4/6"></div>
-                                    <div class="mt-6 space-y-2">
-                                        <div class="h-1.5 bg-slate-200 rounded w-full"></div>
-                                        <div class="h-1.5 bg-slate-200 rounded w-full"></div>
-                                        <div class="h-1.5 bg-slate-200 rounded w-3/4"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6 md:p-8">
-                        <h4 class="font-semibold text-slate-900 mb-4">O que está incluído:</h4>
-                        <ul class="space-y-3 text-[14px] text-slate-600">
-                            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-green-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Teste completo com enunciados sobre Estado Novo, Segunda Guerra Mundial e Guerra Fria</span></li>
-                            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-green-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Grelha de correção detalhada e critérios de avaliação</span></li>
-                            <li class="flex items-start gap-3"><svg class="w-5 h-5 text-green-600 mt-0.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Formato PDF pronto a imprimir - 14 páginas</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Right: Form -->
-            <section class="lg:col-span-2">
-                <div class="bg-white rounded-[28px] shadow-soft border border-slate-100 p-6 md:p-8 sticky top-6">
-                    <div class="mb-6">
-                        <h2 class="text-xl font-bold text-slate-900">Preencha para descarregar</h2>
-                        <p class="text-sm text-slate-500 mt-1">Versão debug: mostra resposta do Supabase</p>
+            <div class="card form-card">
+                <form id="downloadForm" novalidate>
+                    <div class="field">
+                        <label for="nome">Nome completo</label>
+                        <input type="text" id="nome" name="nome" required autocomplete="name" placeholder="Ex: João Pereira">
                     </div>
 
-                    <form id="downloadForm" class="space-y-4" novalidate>
-                        <div>
-                            <label for="nome" class="text-[13px] font-medium text-slate-700">Nome completo</label>
-                            <input id="nome" type="text" required class="mt-1.5 w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-[15px]" placeholder="O seu nome">
-                        </div>
-                        <div>
-                            <label for="email" class="text-[13px] font-medium text-slate-700">Email</label>
-                            <input id="email" type="email" required class="mt-1.5 w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-[15px]" placeholder="nome@escola.pt">
-                        </div>
-                        <div>
-                            <label for="ano" class="text-[13px] font-medium text-slate-700">Ano escolar</label>
-                            <select id="ano" class="mt-1.5 w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-[15px] bg-white">
-                                <option>9º Ano</option>
-                                <option>8º Ano</option>
-                                <option>7º Ano</option>
-                                <option>Professor</option>
-                                <option>Outro</option>
-                            </select>
-                        </div>
-                        <div class="flex items-start gap-2.5 pt-1">
-                            <input id="termos" type="checkbox" class="mt-0.5 w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
-                            <label for="termos" class="text-[12px] text-slate-500 leading-snug">Aceito receber materiais de estudo (opcional em modo debug)</label>
-                        </div>
-
-                        <button id="submitBtn" type="submit" class="w-full relative overflow-hidden group bg-slate-900 hover:bg-black text-white font-semibold py-3.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 mt-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                            <span>Descarregar PDF Gratuitamente</span>
-                        </button>
-
-                        <p class="text-[11px] text-center text-slate-400">Ao descarregar, o registo será enviado para Supabase para debug</p>
-                    </form>
-
-                    <!-- Success -->
-                    <div id="successBox" class="hidden mt-5 p-4 bg-green-50 border border-green-200 rounded-xl">
-                        <div class="flex gap-2.5">
-                            <svg class="w-5 h-5 text-green-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
-                            <div>
-                                <p class="text-[13px] font-semibold text-green-900">Registo enviado com sucesso!</p>
-                                <p class="text-[12px] text-green-700 mt-0.5">O download foi iniciado automaticamente.</p>
-                            </div>
-                        </div>
+                    <div class="field">
+                        <label for="email">Email escolar ou pessoal</label>
+                        <input type="email" id="email" name="email" required autocomplete="email" placeholder="nome@escola.pt">
                     </div>
 
-                    <!-- Error -->
-                    <div id="errorBox" class="hidden mt-5"></div>
-
-                    <!-- Debug Panel -->
-                    <div id="debugPanel" class="hidden mt-5">
-                        <div class="flex items-center justify-between mb-2">
-                            <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-500">Painel Debug Supabase</span>
-                            <button id="copyDebug" type="button" class="text-[11px] text-blue-600 hover:text-blue-700 font-medium">Copiar log</button>
-                        </div>
-                        <div class="bg-slate-950 rounded-xl border border-slate-800 overflow-hidden">
-                            <pre id="debugLog" class="mono text-[11px] leading-relaxed text-emerald-300 p-3.5 max-h-64 overflow-auto whitespace-pre-wrap break-words"></pre>
-                        </div>
+                    <div class="consent">
+                        <input type="checkbox" id="autorizo" required>
+                        <label for="autorizo">Autorizo o registo do meu acesso para controlo de downloads</label>
                     </div>
-                </div>
-            </section>
-        </main>
 
-        <footer class="text-center mt-12 text-[12px] text-slate-400">
-            Página de debug • Não indexar • Teste interno
-        </footer>
+                    <button type="submit" class="btn" id="btnDownload">Descarregar PDF</button>
+
+                    <div id="success" class="success">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="11" fill="#137333"/>
+                            <path d="M9 12.5L11 14.5L15 10.5" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Download iniciado. Verifique a pasta de transferências.
+                    </div>
+                    <div id="error" class="error"></div>
+
+                    <div class="info-note">
+                        Acesso restrito a fins educativos • Registo obrigatório
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="trust-note">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+                <path d="M12 17C13.1 17 14 16.1 14 15C14 13.9 13.1 13 12 13C10.9 13 10 13.9 10 15C10 16.1 10.9 17 12 17Z" fill="#80868b"/>
+                <path d="M18 8H17V6C17 3.24 14.76 1 12 1C9.24 1 7 3.24 7 6V8H6C4.9 8 4 8.9 4 10V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V10C20 8.9 19.1 8 18 8ZM9 6C9 4.34 10.34 3 12 3C13.66 3 15 4.34 15 6V8H9V6Z" fill="#80868b"/>
+            </svg>
+            Este ficheiro é disponibilizado exclusivamente para fins educativos. O acesso é registado para garantir a integridade académica. Nenhum dado será partilhado com terceiros.
+        </div>
     </div>
 
-<script>
-const NOME_FICHEIRO = 'Teste História 9º Ano .pdf';
-const SUPABASE_URL = 'https://yqkoxxkewixmgesugkvw.supabase.co'; // <- manter como antes
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlxa294eGtld2l4bWdlc3Vna3Z3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQ1NjI4NzksImV4cCI6MjA1MDEzODg3OX0._placeholder_manter_chave'; // <- manter como antes
+    <script>
+        const SUPABASE_URL = 'https://fufzpzrktqontwjqkinz.supabase.co';
+        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ1ZnpwenJrdHFvbnR3anFraW56Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk0NzI0MTQsImV4cCI6MjA5NTA0ODQxNH0.AUvqVheU-7zozmOYXm5wWbiTEyyWRbtnnY73-hXj6-0';
+        const NOME_FICHEIRO = 'Teste História 9º Ano .pdf';
 
-const form = document.getElementById('downloadForm');
-const submitBtn = document.getElementById('submitBtn');
-const debugPanel = document.getElementById('debugPanel');
-const debugLog = document.getElementById('debugLog');
-const errorBox = document.getElementById('errorBox');
-const successBox = document.getElementById('successBox');
-const copyBtn = document.getElementById('copyDebug');
+        const form = document.getElementById('downloadForm');
+        const btn = document.getElementById('btnDownload');
+        const successEl = document.getElementById('success');
+        const errorEl = document.getElementById('error');
 
-function escapeHtml(str) {
-    return String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
-}
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorEl.classList.remove('show');
+            errorEl.textContent = '';
+            successEl.style.display = 'none';
 
-function log(line) {
-    debugLog.textContent += line + '\n';
-    debugLog.scrollTop = debugLog.scrollHeight;
-}
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const autorizo = document.getElementById('autorizo').checked;
 
-copyBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(debugLog.textContent).then(() => {
-        copyBtn.textContent = 'Copiado!';
-        setTimeout(() => copyBtn.textContent = 'Copiar log', 1500);
-    });
-});
+            if (!nome || !email) {
+                errorEl.textContent = 'Por favor preencha todos os campos.';
+                errorEl.classList.add('show');
+                return;
+            }
 
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    // Reset UI
-    errorBox.classList.add('hidden');
-    successBox.classList.add('hidden');
-    debugPanel.classList.remove('hidden');
-    debugLog.textContent = '';
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path></svg><span>A processar...</span>';
+            if (!autorizo) {
+                errorEl.textContent = 'É necessário autorizar o registo para continuar.';
+                errorEl.classList.add('show');
+                return;
+            }
 
-    const nome = document.getElementById('nome').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const ano = document.getElementById('ano').value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorEl.textContent = 'Por favor introduza um email válido.';
+                errorEl.classList.add('show');
+                return;
+            }
 
-    log('=== DEBUG DOWNLOAD TESTE HISTÓRIA ===');
-    log(`Timestamp: ${new Date().toISOString()}`);
-    log(`Ficheiro: "${NOME_FICHEIRO}"`);
-    log(`Nome: ${nome} | Email: ${email} | Ano: ${ano}`);
-    log('');
-    log('[1/3] A obter IP do utilizador...');
-    
-    let ip = '0.0.0.0';
-    try {
-        const ipRes = await fetch('https://api.ipify.org?format=json');
-        if (ipRes.ok) {
-            const data = await ipRes.json();
-            ip = data.ip || '0.0.0.0';
-            log(`✓ IP obtido: ${ip}`);
-        } else {
-            log(`✗ Falha ao obter IP (status ${ipRes.status}). A usar fallback: 0.0.0.0`);
-        }
-    } catch (err) {
-        log(`✗ Erro api.ipify.org: ${err.message}. A usar fallback: 0.0.0.0`);
-    }
+            btn.disabled = true;
+            btn.textContent = 'A processar...';
 
-    log('');
-    log('[2/3] A enviar para Supabase...');
-    log(`URL: ${SUPABASE_URL}/rest/v1/downloads`);
+            try {
+                let ip = null;
+                try {
+                    const ipRes = await fetch('https://api.ipify.org?format=json');
+                    const ipData = await ipRes.json();
+                    ip = ipData.ip;
+                } catch (ipErr) {
+                    ip = 'indisponível';
+                }
 
-    const payload = {
-        nome,
-        email,
-        ano_escolar: ano,
-        ip_address: ip,
-        ficheiro: NOME_FICHEIRO,
-        user_agent: navigator.userAgent,
-        created_at: new Date().toISOString()
-    };
-    
-    log('Payload: ' + JSON.stringify(payload, null, 2));
-    log('');
-    log('A enviar POST...');
+                const payload = {
+                    nome: nome,
+                    email: email,
+                    ip: ip,
+                    user_agent: navigator.userAgent,
+                    ficheiro: NOME_FICHEIRO,
+                    data_download: new Date().toISOString()
+                };
 
-    let statusCode = 0;
-    let responseText = '';
-    let responseOk = false;
+                await fetch(`${SUPABASE_URL}/rest/v1/downloads`, {
+                    method: 'POST',
+                    headers: {
+                        'apikey': SUPABASE_KEY,
+                        'Authorization': `Bearer ${SUPABASE_KEY}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify(payload)
+                });
 
-    try {
-        const res = await fetch(`${SUPABASE_URL}/rest/v1/downloads`, {
-            method: 'POST',
-            headers: {
-                'apikey': SUPABASE_KEY,
-                'Authorization': `Bearer ${SUPABASE_KEY}`,
-                'Content-Type': 'application/json',
-                'Prefer': 'return=representation'
-            },
-            body: JSON.stringify(payload)
+                // Trigger download
+                const a = document.createElement('a');
+                a.href = encodeURI(NOME_FICHEIRO);
+                a.download = 'Teste_Historia_9Ano_2024.pdf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                successEl.style.display = 'flex';
+                btn.textContent = 'Download concluído';
+                
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.textContent = 'Descarregar PDF';
+                }, 4000);
+
+            } catch (err) {
+                console.error('Erro:', err);
+                errorEl.textContent = 'Ocorreu um erro ao registar o download. Tente novamente.';
+                errorEl.classList.add('show');
+                btn.disabled = false;
+                btn.textContent = 'Descarregar PDF';
+            }
         });
-
-        statusCode = res.status;
-        responseText = await res.text();
-        responseOk = res.ok;
-
-        log(`→ STATUS: ${statusCode} ${res.statusText}`);
-        log(`→ RESPOSTA BRUTA:`);
-        log(responseText || '(resposta vazia)');
-
-        if (!res.ok) {
-            errorBox.classList.remove('hidden');
-            errorBox.innerHTML = `
-                <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded-xl">
-                    <div class="flex gap-2.5">
-                        <svg class="w-5 h-5 text-red-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                        <div class="flex-1 min-w-0">
-                            <p class="text-[13px] font-semibold text-red-900">Erro ao registar no Supabase</p>
-                            <p class="text-[12px] text-red-800 mt-1">Status: <strong>${statusCode}</strong> - ${escapeHtml(res.statusText)}</p>
-                            <div class="mt-2">
-                                <p class="text-[11px] font-medium text-red-800 mb-1">Resposta do servidor:</p>
-                                <pre class="text-[11px] bg-red-100 text-red-900 p-2.5 rounded-lg overflow-auto max-h-32 whitespace-pre-wrap break-words border border-red-200">${escapeHtml(responseText)}</pre>
-                            </div>
-                            <p class="text-[11px] text-red-700 mt-2 italic">O download vai iniciar na mesma (modo debug ignora erro DB).</p>
-                        </div>
-                    </div>
-                </div>
-            `;
-        } else {
-            successBox.classList.remove('hidden');
-            log('');
-            log('✓ Sucesso! Registo inserido no Supabase.');
-        }
-
-    } catch (err) {
-        statusCode = 0;
-        responseText = err.message;
-        log(`✗ ERRO DE REDE/FETCH: ${err.message}`);
-        log('→ Verifique CORS, URL do Supabase e ligação à internet.');
-        
-        errorBox.classList.remove('hidden');
-        errorBox.innerHTML = `
-            <div class="p-4 bg-red-50 border-l-4 border-red-500 rounded-xl">
-                <p class="text-[13px] font-semibold text-red-900">Erro de rede ao contactar Supabase</p>
-                <p class="text-[12px] text-red-800 mt-1">Status: <strong>0 (sem resposta)</strong></p>
-                <pre class="text-[11px] bg-red-100 text-red-900 p-2.5 rounded-lg mt-2 overflow-auto whitespace-pre-wrap">${escapeHtml(err.message)}</pre>
-                <p class="text-[11px] text-red-700 mt-2 italic">O download vai iniciar na mesma.</p>
-            </div>
-        `;
-    }
-
-    log('');
-    log('[3/3] A iniciar download do ficheiro...');
-    
-    try {
-        const fileUrl = encodeURI(NOME_FICHEIRO);
-        log(`→ URL codificado: ${fileUrl}`);
-        
-        // Forçar download mesmo se DB falhar
-        const a = document.createElement('a');
-        a.href = fileUrl;
-        a.download = NOME_FICHEIRO;
-        a.style.display = 'none';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        
-        log('✓ Comando de download executado.');
-        log('');
-        log('=== FIM DEBUG ===');
-    } catch (err) {
-        log(`✗ Erro ao iniciar download: ${err.message}`);
-    }
-
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = '<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span>Descarregar Novamente</span>';
-});
-</script>
+    </script>
 </body>
 </html>
